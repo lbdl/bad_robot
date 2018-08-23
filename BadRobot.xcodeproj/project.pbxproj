@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B522B61212F4A0200BB43AC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B60212F4A0200BB43AC /* main.swift */; };
+		2B522B68212F563800BB43AC /* FileReaderErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B67212F563800BB43AC /* FileReaderErrors.swift */; };
+		2B522B6A212F566900BB43AC /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B69212F566900BB43AC /* FileReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		2B522B5D212F4A0200BB43AC /* BadRobot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BadRobot; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B522B60212F4A0200BB43AC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2B522B67212F563800BB43AC /* FileReaderErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderErrors.swift; sourceTree = "<group>"; };
+		2B522B69212F566900BB43AC /* FileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,35 @@
 		2B522B5F212F4A0200BB43AC /* BadRobot */ = {
 			isa = PBXGroup;
 			children = (
-				2B522B60212F4A0200BB43AC /* main.swift */,
+				2B522B6D212F56CE00BB43AC /* Application */,
+				2B522B6C212F56AF00BB43AC /* Utility */,
+				2B522B6B212F56A000BB43AC /* Model */,
 			);
 			path = BadRobot;
+			sourceTree = "<group>";
+		};
+		2B522B6B212F56A000BB43AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2B522B6C212F56AF00BB43AC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2B522B67212F563800BB43AC /* FileReaderErrors.swift */,
+				2B522B69212F566900BB43AC /* FileReader.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		2B522B6D212F56CE00BB43AC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2B522B60212F4A0200BB43AC /* main.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B522B6A212F566900BB43AC /* FileReader.swift in Sources */,
 				2B522B61212F4A0200BB43AC /* main.swift in Sources */,
+				2B522B68212F563800BB43AC /* FileReaderErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
