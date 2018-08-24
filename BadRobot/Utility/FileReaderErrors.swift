@@ -11,5 +11,6 @@ import Foundation
 enum FileReaderError: Error {
     case invalidPath(path: String)
     case unreadableFile(path: String)
+    case dataReadError(error: String)
     case invalidFormat
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 struct InputReader {
-    
-    func getInput() -> String? {
+        
+    private func getInput() -> String? {
         print("Input path the Robot Command File", terminator: ": ")
         if let inputLine = readLine() {
             return inputLine
@@ -19,7 +19,7 @@ struct InputReader {
         }
     }
     
-    func testPath(_ fPath: String ) throws {
+    private func testPath(_ fPath: String ) throws {
         let expandedString = fPath as NSString
         let pathStr = String(expandedString.expandingTildeInPath)
         
@@ -29,6 +29,28 @@ struct InputReader {
         
         if !FileManager.default.isReadableFile(atPath: pathStr) {
             throw FileReaderError.unreadableFile(path: pathStr)
+        }
+    }
+    
+    private func readFileFrom(_ path: String) throws -> Data? {
+        let fURL = URL(fileURLWithPath:( path as NSString).expandingTildeInPath)
+        
+        do {
+            let robotData = try Data(contentsOf: fURL)
+            return robotData
+        } catch {
+            throw FileReaderError.dataReadError(error: "Could not convert file \(fURL.absoluteString)")
+        }
+    }
+    
+    func readRobotData() throws -> Data? {
+        guard let dataPath = getInput() else { return nil}
+        do {
+            try testPath(dataPath)
+            return try readFileFrom(dataPath)
+        } catch {
+            print(error)
+            return nil
         }
     }
     

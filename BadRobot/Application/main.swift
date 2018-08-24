@@ -9,4 +9,5 @@
 import Foundation
 
 let reader = InputReader()
+let data = try? reader.readRobotData()
 
