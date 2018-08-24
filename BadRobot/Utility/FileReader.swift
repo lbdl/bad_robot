@@ -64,15 +64,19 @@ struct InputParser {
         localString = data.toString()
     }
     
-    func readGridData() throws {
+    func readGridData() throws -> PlanetGrid {
         
-        let commandString = localString.split(separator: " ")
+        let commandString = localString.split(separator: "\n")
         
-        let strLength = commandString.count
-        
-        if (strLength % 2) != 1 {
+        if (commandString.count % 2) != 1 {
             throw CommandParserError.IncorrectFileFormatError(msg: "Wrong length")
         }
+        
+        guard let gridLine = commandString.first else { throw CommandParserError.IncorrectGridData(msg: "") }
+        let gridData = gridLine.split(separator: " ")
+        return PlanetGrid(xMax: Int(gridData[0])!, yMax: Int(gridData[1])!)
     }
+    
+    func readRobotsData () -> [Robot]
     
 }

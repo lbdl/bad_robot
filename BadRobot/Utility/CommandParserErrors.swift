@@ -11,4 +11,5 @@ import Foundation
 
 enum CommandParserError: Error {
     case IncorrectFileFormatError(msg: String)
+    case IncorrectGridData(msg: String)
 }

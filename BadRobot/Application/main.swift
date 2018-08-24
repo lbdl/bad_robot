@@ -13,6 +13,7 @@ let reader = InputReader()
 do {
     let data = try reader.readRobotData()
     let parser = InputParser(data!)
+    try parser.readGridData()
 } catch {
     print(error)
 }

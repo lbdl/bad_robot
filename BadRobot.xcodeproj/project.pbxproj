@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B4D361F2130C22C005E1BF1 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D361E2130C22C005E1BF1 /* Robot.swift */; };
+		2B4D36212130C266005E1BF1 /* RobotCoord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D36202130C266005E1BF1 /* RobotCoord.swift */; };
 		2B522B61212F4A0200BB43AC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B60212F4A0200BB43AC /* main.swift */; };
 		2B522B68212F563800BB43AC /* FileReaderErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B67212F563800BB43AC /* FileReaderErrors.swift */; };
 		2B522B6A212F566900BB43AC /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B69212F566900BB43AC /* FileReader.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B4D361E2130C22C005E1BF1 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
+		2B4D36202130C266005E1BF1 /* RobotCoord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotCoord.swift; sourceTree = "<group>"; };
 		2B522B5D212F4A0200BB43AC /* BadRobot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BadRobot; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B522B60212F4A0200BB43AC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2B522B67212F563800BB43AC /* FileReaderErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderErrors.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				2B522B702130B41C00BB43AC /* PlanetGrid.swift */,
+				2B4D361E2130C22C005E1BF1 /* Robot.swift */,
+				2B4D36202130C266005E1BF1 /* RobotCoord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,8 +165,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B4D36212130C266005E1BF1 /* RobotCoord.swift in Sources */,
 				2B522B712130B41C00BB43AC /* PlanetGrid.swift in Sources */,
 				2B522B6F2130B2C500BB43AC /* Data+String.swift in Sources */,
+				2B4D361F2130C22C005E1BF1 /* Robot.swift in Sources */,
 				2B522B6A212F566900BB43AC /* FileReader.swift in Sources */,
 				2B522B61212F4A0200BB43AC /* main.swift in Sources */,
 				2B522B68212F563800BB43AC /* FileReaderErrors.swift in Sources */,
