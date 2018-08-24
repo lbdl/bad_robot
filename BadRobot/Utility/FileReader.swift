@@ -58,4 +58,21 @@ struct InputReader {
 
 struct InputParser {
     
+    var localString: String
+    
+    init(_ data: Data) {
+        localString = data.toString()
+    }
+    
+    func readGridData() throws {
+        
+        let commandString = localString.split(separator: " ")
+        
+        let strLength = commandString.count
+        
+        if (strLength % 2) != 1 {
+            throw CommandParserError.IncorrectFileFormatError(msg: "Wrong length")
+        }
+    }
+    
 }

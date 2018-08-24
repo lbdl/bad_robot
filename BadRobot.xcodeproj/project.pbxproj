@@ -10,6 +10,9 @@
 		2B522B61212F4A0200BB43AC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B60212F4A0200BB43AC /* main.swift */; };
 		2B522B68212F563800BB43AC /* FileReaderErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B67212F563800BB43AC /* FileReaderErrors.swift */; };
 		2B522B6A212F566900BB43AC /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B69212F566900BB43AC /* FileReader.swift */; };
+		2B522B6F2130B2C500BB43AC /* Data+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B6E2130B2C500BB43AC /* Data+String.swift */; };
+		2B522B712130B41C00BB43AC /* PlanetGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B702130B41C00BB43AC /* PlanetGrid.swift */; };
+		2B522B732130B57000BB43AC /* CommandParserErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B522B722130B57000BB43AC /* CommandParserErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +32,9 @@
 		2B522B60212F4A0200BB43AC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2B522B67212F563800BB43AC /* FileReaderErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReaderErrors.swift; sourceTree = "<group>"; };
 		2B522B69212F566900BB43AC /* FileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
+		2B522B6E2130B2C500BB43AC /* Data+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+String.swift"; sourceTree = "<group>"; };
+		2B522B702130B41C00BB43AC /* PlanetGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetGrid.swift; sourceTree = "<group>"; };
+		2B522B722130B57000BB43AC /* CommandParserErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParserErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 		2B522B6B212F56A000BB43AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2B522B702130B41C00BB43AC /* PlanetGrid.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -80,6 +87,8 @@
 			children = (
 				2B522B67212F563800BB43AC /* FileReaderErrors.swift */,
 				2B522B69212F566900BB43AC /* FileReader.swift */,
+				2B522B6E2130B2C500BB43AC /* Data+String.swift */,
+				2B522B722130B57000BB43AC /* CommandParserErrors.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -150,9 +159,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B522B712130B41C00BB43AC /* PlanetGrid.swift in Sources */,
+				2B522B6F2130B2C500BB43AC /* Data+String.swift in Sources */,
 				2B522B6A212F566900BB43AC /* FileReader.swift in Sources */,
 				2B522B61212F4A0200BB43AC /* main.swift in Sources */,
 				2B522B68212F563800BB43AC /* FileReaderErrors.swift in Sources */,
+				2B522B732130B57000BB43AC /* CommandParserErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

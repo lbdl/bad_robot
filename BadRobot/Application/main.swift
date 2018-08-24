@@ -9,5 +9,14 @@
 import Foundation
 
 let reader = InputReader()
-let data = try? reader.readRobotData()
+
+do {
+    let data = try reader.readRobotData()
+    let parser = InputParser(data!)
+} catch {
+    print(error)
+}
+
+
+
 
