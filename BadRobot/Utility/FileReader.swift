@@ -81,7 +81,7 @@ struct InputParser {
         // assume that rawCommands has dropped off the first line with the grid data
         // lines are now 2 lines of data the start pos then the commands
         // so we want to use tail recursion, maybe we could get the same with reduce
-        // but the data is \n seperated so pos newline commands
+        // but the data is \n separated so position newline commands
         if let nxt = rawCommands.first {
             let startRaw = nxt.split(separator: " ")
             let robotCoordinate = RobotCoord(direction: Dir(rawString: String(startRaw[2]))!, position: Pos(x: Int(startRaw[0])!, y: Int(startRaw[1])!))
@@ -97,5 +97,4 @@ struct InputParser {
             return
         }
     }
-    
 }

@@ -17,6 +17,7 @@ do {
 
     let robotsSlices = parser.localString.split(separator: "\n").dropFirst()
 
+    // drop the grid data and build some robots
     let commandsArray = robotsSlices.map { substring -> String in
         return String(substring)
      }
@@ -24,7 +25,9 @@ do {
     var robotArray = Array<Robot>()
     parser.readRobotsData(commandsArray, robots: &robotArray)
 
-    print(grid)
+    let engine = Engine(robotArray, grid: grid)
+    engine.runRobot(robotArray[0])
+
 } catch {
     print(error)
 }

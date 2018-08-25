@@ -25,6 +25,3 @@ struct Robot {
     }
 }
 
-struct Motor {
-    var robot: Robot
-}
