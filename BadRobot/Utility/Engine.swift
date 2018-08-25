@@ -20,18 +20,18 @@ class Engine: NSObject {
     }
 
     func deployRobotArmy() {
-        robots.forEach({bot in
-            let runner = Driver(bot, flatEarth: grid)
-            runner.run()
-        })
+        for bot in robots {
+            let driver = Driver(bot, flatEarth: grid)
+            driver.run()
+        }
     }
 
 }
 
-class Driver: NSObject {
+struct Driver{
 
-    private var myBot: Robot
-    private var diskWorld: PlanetGrid
+    var myBot: Robot
+    var diskWorld: PlanetGrid
 
     private func getNextDirection(_ dir: Dir, nxtMove: Move) -> Dir {
         switch nxtMove {
@@ -66,8 +66,9 @@ class Driver: NSObject {
         }
     }
 
-    private func didFallOffEdge(_ pos: RobotCoord) {
-
+    private func didFallOffEdge(_ pos: RobotCoord) -> Bool {
+        let freeFall = (pos.position.x < 0 || pos.position.x > diskWorld.maxX) || (pos.position.y > diskWorld.maxY || pos.position.y < 0)
+        return freeFall
     }
 
     private func updatePosition(_ pos: RobotCoord, cmd: String) -> RobotCoord {
@@ -76,32 +77,35 @@ class Driver: NSObject {
         return RobotCoord(direction: newDir, position: newPosition)
     }
 
-    private func runCommands(_ commands: inout String ) {
+    private func runCommands(_ commands: inout String, curPos: inout RobotCoord ) {
         if let cmd = commands.first {
-            let newPos = updatePosition(myBot.currentPosition, cmd: String(cmd))
-            let updatedBot = Robot(original: myBot, newPos: newPos, fPos: nil)
-            myBot = updatedBot
+            var newPos = updatePosition(curPos, cmd: String(cmd))
 
             //did we fall off of the edge?
-            //let valhallaCalls = didFallOffEdge(myBot.currentPosition)
+            if didFallOffEdge(newPos) {
+                print("\(curPos.position.x)" + "\(curPos.position.y)" + "\(curPos.direction)" + " LOST")
+                return
+            }
+
             let newSeq = commands.dropFirst()
             var newCmds = String(newSeq)
-            runCommands(&newCmds)
+            runCommands(&newCmds, curPos: &newPos)
         } else {
-            print("Robot final position: facing:\(myBot.currentPosition.direction) at:\(myBot.currentPosition.position)")
+            print("\(curPos.position.x)" + "\(curPos.position.y)" + "\(curPos.direction)")
             return
         }
     }
-
+    
     func run() {
-        runCommands(&myBot.commands)
+        var commands = myBot.commands
+        var startPosition = myBot.currentPosition
+        runCommands(&commands, curPos: &startPosition)
     }
 
 
     init(_ bot: Robot, flatEarth: PlanetGrid) {
         myBot = bot
         diskWorld = flatEarth
-        super.init()
     }
 
 
