@@ -21,7 +21,7 @@ class Engine: NSObject {
 
     func deployRobotArmy() {
         robots.forEach({bot in
-            let runner = Driver(bot)
+            let runner = Driver(bot, flatEarth: grid)
             runner.run()
         })
     }
@@ -30,7 +30,8 @@ class Engine: NSObject {
 
 class Driver: NSObject {
 
-    var myBot: Robot
+    private var myBot: Robot
+    private var diskWorld: PlanetGrid
 
     private func getNextDirection(_ dir: Dir, nxtMove: Move) -> Dir {
         switch nxtMove {
@@ -65,6 +66,10 @@ class Driver: NSObject {
         }
     }
 
+    private func didFallOffEdge(_ pos: RobotCoord) {
+
+    }
+
     private func updatePosition(_ pos: RobotCoord, cmd: String) -> RobotCoord {
         let newDir = getNextDirection(pos.direction, nxtMove: Move(rawString: cmd)!)
         let newPosition = getNextCoordinate(Move(rawString: cmd)!, direction: newDir, position: pos.position)
@@ -93,8 +98,9 @@ class Driver: NSObject {
     }
 
 
-    init(_ bot: Robot) {
+    init(_ bot: Robot, flatEarth: PlanetGrid) {
         myBot = bot
+        diskWorld = flatEarth
         super.init()
     }
 
