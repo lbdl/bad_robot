@@ -16,25 +16,36 @@ class Engine: NSObject {
     init(_ robots: [Robot], grid: PlanetGrid) {
         self.robots = robots
         self.grid = grid
-
         super.init()
-
     }
-    
-    func getNextDirection(_ dir: Dir, nxtMove: Move) -> Dir {
+
+    func deployRobotArmy() {
+        robots.forEach({bot in
+            let runner = Driver(bot)
+            runner.run()
+        })
+    }
+
+}
+
+class Driver: NSObject {
+
+    var myBot: Robot
+
+    private func getNextDirection(_ dir: Dir, nxtMove: Move) -> Dir {
         switch nxtMove {
         case .L:
-            let nxt = (dir.rawValue - 1) % 4
+            let nxt = abs((dir.rawValue - 1) % 4)
             return Dir(rawValue: nxt)!
         case .R:
-            let nxt = (dir.rawValue + 1) % 4
+            let nxt = abs((dir.rawValue + 1) % 4)
             return Dir(rawValue: nxt)!
         case .F:
             return dir
         }
     }
 
-    func getNextCoordinate(_ move: Move, direction: Dir, position: Pos) -> Pos {
+    private func getNextCoordinate(_ move: Move, direction: Dir, position: Pos) -> Pos {
         switch move {
         case .F:
             switch direction {
@@ -54,32 +65,38 @@ class Engine: NSObject {
         }
     }
 
-    func updatePosition(_ pos: RobotCoord, cmd: String) -> RobotCoord {
+    private func updatePosition(_ pos: RobotCoord, cmd: String) -> RobotCoord {
         let newDir = getNextDirection(pos.direction, nxtMove: Move(rawString: cmd)!)
         let newPosition = getNextCoordinate(Move(rawString: cmd)!, direction: newDir, position: pos.position)
         return RobotCoord(direction: newDir, position: newPosition)
     }
 
-    func runRobot(_ bot: Robot) {
+    private func runCommands(_ commands: inout String ) {
+        if let cmd = commands.first {
+            let newPos = updatePosition(myBot.currentPosition, cmd: String(cmd))
+            let updatedBot = Robot(original: myBot, newPos: newPos, fPos: nil)
+            myBot = updatedBot
 
-        var myBot = bot
-
-        func runCommands(_ commands: inout String ) {
-            if let cmd = commands.first {
-                let newPos = updatePosition(myBot.startPos, cmd: String(cmd))
-                let updatedBot = Robot(original: myBot, newPos: newPos, fPos: nil)
-                myBot = updatedBot
-                let newSeq = commands.dropFirst()
-                var newCmds = String(newSeq)
-                runCommands(&newCmds)
-            } else {
-                print("Robot final position: facing:\(myBot.startPos.direction) at:\(myBot.startPos.position)")
-                return
-            }
+            //did we fall off of the edge?
+            //let valhallaCalls = didFallOffEdge(myBot.currentPosition)
+            let newSeq = commands.dropFirst()
+            var newCmds = String(newSeq)
+            runCommands(&newCmds)
+        } else {
+            print("Robot final position: facing:\(myBot.currentPosition.direction) at:\(myBot.currentPosition.position)")
+            return
         }
-
-
-        runCommands(&myBot.commands)
-
     }
+
+    func run() {
+        runCommands(&myBot.commands)
+    }
+
+
+    init(_ bot: Robot) {
+        myBot = bot
+        super.init()
+    }
+
+
 }

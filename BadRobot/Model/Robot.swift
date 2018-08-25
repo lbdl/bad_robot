@@ -9,17 +9,17 @@
 import Foundation
 
 struct Robot {
-    var startPos: RobotCoord
+    var currentPosition: RobotCoord
     var finalPosition: RobotCoord?
     var commands: String
     
     init(sPos: RobotCoord, cmds: String) {
-        startPos = sPos
+        currentPosition = sPos
         commands = cmds
     }
     
     init(original: Robot, newPos nPos: RobotCoord, fPos: RobotCoord?) {
-        startPos = nPos
+        currentPosition = nPos
         commands = original.commands
         finalPosition = fPos
     }

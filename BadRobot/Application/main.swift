@@ -26,7 +26,7 @@ do {
     parser.readRobotsData(commandsArray, robots: &robotArray)
 
     let engine = Engine(robotArray, grid: grid)
-    engine.runRobot(robotArray[0])
+    engine.deployRobotArmy()
 
 } catch {
     print(error)
