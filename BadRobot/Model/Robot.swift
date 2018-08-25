@@ -10,5 +10,21 @@ import Foundation
 
 struct Robot {
     var startPos: RobotCoord
+    var finalPosition: RobotCoord?
     var commands: String
+    
+    init(sPos: RobotCoord, cmds: String) {
+        startPos = sPos
+        commands = cmds
+    }
+    
+    init(original: Robot, finalPos fPos: RobotCoord) {
+        startPos = original.startPos
+        commands = original.commands
+        finalPosition = fPos
+    }
+}
+
+struct Motor {
+    var robot: Robot
 }
