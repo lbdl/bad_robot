@@ -52,6 +52,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B4D36222131130E005E1BF1 /* ErrorTypes */ = {
+			isa = PBXGroup;
+			children = (
+				2B522B67212F563800BB43AC /* FileReaderErrors.swift */,
+				2B522B722130B57000BB43AC /* CommandParserErrors.swift */,
+			);
+			path = ErrorTypes;
+			sourceTree = "<group>";
+		};
+		2B4D362321311335005E1BF1 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				2B522B6E2130B2C500BB43AC /* Data+String.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		2B522B54212F4A0200BB43AC = {
 			isa = PBXGroup;
 			children = (
@@ -91,10 +108,9 @@
 		2B522B6C212F56AF00BB43AC /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				2B522B67212F563800BB43AC /* FileReaderErrors.swift */,
+				2B4D36222131130E005E1BF1 /* ErrorTypes */,
 				2B522B69212F566900BB43AC /* FileReader.swift */,
-				2B522B6E2130B2C500BB43AC /* Data+String.swift */,
-				2B522B722130B57000BB43AC /* CommandParserErrors.swift */,
+				2B4D362321311335005E1BF1 /* Extentions */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
