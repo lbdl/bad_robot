@@ -12,8 +12,25 @@ enum Dir: Int {
     case N, E, S, W
 }
 
+extension Dir {
+    static var dirDict: [String: Dir] = [
+        "N": .N,
+        "E": .E,
+        "S": .S,
+        "W": .W
+    ]
+}
+
 enum Move: Int {
     case L, R, F
+}
+
+extension Move {
+    static var moveDict: [String: Move] = [
+        "L": .L,
+        "R": .R,
+        "F": .F
+    ]
 }
 
 struct Pos {

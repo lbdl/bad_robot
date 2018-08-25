@@ -14,6 +14,7 @@ do {
     let data = try reader.readRobotData()
     let parser = InputParser(data!)
     let grid = try parser.readGridData()
+
     print(grid)
 } catch {
     print(error)
