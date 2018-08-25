@@ -34,14 +34,30 @@ class Engine: NSObject {
         }
     }
 
-    func getNextCoordinate(_ move: Move, direction: Dir, position: Pos) -> Pos? {
-
+    func getNextCoordinate(_ move: Move, direction: Dir, position: Pos) -> Pos {
+        switch move {
+        case .F:
+            switch direction {
+            case .N:
+                return Pos(x: position.x, y: position.y + 1)
+            case .E:
+                return Pos(x: position.x + 1, y: position.y)
+            case .S:
+                return Pos(x: position.x, y: position.y - 1)
+            case .W:
+                return Pos(x: position.x - 1, y: position.y)
+            }
+        case .L:
+            return position
+        case .R:
+            return position
+        }
     }
 
-    func updatePosition(_ pos: RobotCoord, cmd: String) -> RobotCoord? {
+    func updatePosition(_ pos: RobotCoord, cmd: String) -> RobotCoord {
         let newDir = getNextDirection(pos.direction, nxtMove: Move(rawString: cmd)!)
         let newPosition = getNextCoordinate(Move(rawString: cmd)!, direction: newDir, position: pos.position)
-        return nil
+        return RobotCoord(direction: newDir, position: newPosition)
     }
 
     func runRobot(_ bot: Robot) {
@@ -50,12 +66,14 @@ class Engine: NSObject {
 
         func runCommands(_ commands: inout String ) {
             if let cmd = commands.first {
-                print(cmd)
                 let newPos = updatePosition(myBot.startPos, cmd: String(cmd))
+                let updatedBot = Robot(original: myBot, newPos: newPos, fPos: nil)
+                myBot = updatedBot
                 let newSeq = commands.dropFirst()
                 var newCmds = String(newSeq)
                 runCommands(&newCmds)
             } else {
+                print("Robot final position: facing:\(myBot.startPos.direction) at:\(myBot.startPos.position)")
                 return
             }
         }

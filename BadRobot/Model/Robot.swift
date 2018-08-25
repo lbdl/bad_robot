@@ -18,8 +18,8 @@ struct Robot {
         commands = cmds
     }
     
-    init(original: Robot, finalPos fPos: RobotCoord) {
-        startPos = original.startPos
+    init(original: Robot, newPos nPos: RobotCoord, fPos: RobotCoord?) {
+        startPos = nPos
         commands = original.commands
         finalPosition = fPos
     }
