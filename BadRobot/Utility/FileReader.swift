@@ -77,18 +77,18 @@ struct InputParser {
         return PlanetGrid(xMax: Int(gridData[0])!, yMax: Int(gridData[1])!)
     }
     
-    func readRobotsData (_ rawCommands: [String], robots: [Robot] = [Robot]()) -> [Robot] {
-        //assume that rawCommands has dropped off the first line with the grid data
-        //lines are now 2 lines of data the start pos then the commands
-        //so we want to use tail recursion, maybe we could get the same with reduce
-        //but the data is \n seperated so pos newline commands
+    func readRobotsData (_ rawCommands: [String], robots: inout Array<Robot> ) -> [Robot?] {
+        // assume that rawCommands has dropped off the first line with the grid data
+        // lines are now 2 lines of data the start pos then the commands
+        // so we want to use tail recursion, maybe we could get the same with reduce
+        // but the data is \n seperated so pos newline commands
         if let nxt = rawCommands.first {
             let startRaw = nxt.split(separator: " ")
-
-            //convert the string value to enum
-
-            //let coord = RobotCoord(direction: Int(startRaw[2]), position: )
-            //let robot = Robot(sPos: RobotCoord(), cmds: <#T##String#>)
+            let robotCoordinate = RobotCoord(direction: Dir(rawString: String(startRaw[2]))!, position: Pos(x: Int(startRaw[0])!, y: Int(startRaw[1])!))
+            let cmds = rawCommands[1]
+            let robot = Robot(sPos: robotCoordinate, cmds: cmds)
+            robots.append(robot)
+            return robots
         } else {
             return robots
         }
