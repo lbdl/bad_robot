@@ -19,6 +19,11 @@ extension Dir {
         "S": .S,
         "W": .W
     ]
+
+    init?(rawString: String) {
+        guard let type = Dir.dirDict[rawString] else { return nil }
+        self = type
+    }
 }
 
 enum Move: Int {
@@ -31,6 +36,11 @@ extension Move {
         "R": .R,
         "F": .F
     ]
+
+    init?(rawString: String) {
+        guard let type = Move.moveDict[rawString] else { return nil }
+        self = type
+    }
 }
 
 struct Pos {
