@@ -8,6 +8,39 @@
 
 import Foundation
 
+enum Dir: Int {
+    case N, E, S, W
+}
+
+enum Move: Int {
+    case L, R, F
+}
+
+struct Pos {
+    var x: Int
+    var y: Int
+}
+
 struct RobotCoord {
-    var direction:
+    var direction: Dir
+    var position: Pos
+}
+
+struct DirectionFinder {
+    
+    static func getDirection(_ dir: Dir, nxtMove: Move) -> Dir {
+        
+        switch nxtMove {
+        case .L:
+            let nxt = (dir.rawValue - 1) % 4
+            return Dir(rawValue: nxt)!
+        case .R:
+            let nxt = (dir.rawValue + 1) % 4
+            return Dir(rawValue: nxt)!
+        case .F:
+            return dir
+        }
+        
+    }
+    
 }

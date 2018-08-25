@@ -10,5 +10,5 @@ import Foundation
 
 struct Robot {
     var startPos: RobotCoord
-    
+    var commands: String
 }

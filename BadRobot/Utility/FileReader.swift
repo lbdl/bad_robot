@@ -77,6 +77,6 @@ struct InputParser {
         return PlanetGrid(xMax: Int(gridData[0])!, yMax: Int(gridData[1])!)
     }
     
-    func readRobotsData () -> [Robot]
+//    func readRobotsData () -> [Robot]
     
 }
