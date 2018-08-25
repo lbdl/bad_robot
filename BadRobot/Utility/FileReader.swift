@@ -77,7 +77,7 @@ struct InputParser {
         return PlanetGrid(xMax: Int(gridData[0])!, yMax: Int(gridData[1])!)
     }
     
-    func readRobotsData (_ rawCommands: [String], robots: inout Array<Robot> ) -> [Robot?] {
+    func readRobotsData (_ rawCommands: [String], robots: inout Array<Robot> ) {
         // assume that rawCommands has dropped off the first line with the grid data
         // lines are now 2 lines of data the start pos then the commands
         // so we want to use tail recursion, maybe we could get the same with reduce
@@ -88,9 +88,13 @@ struct InputParser {
             let cmds = rawCommands[1]
             let robot = Robot(sPos: robotCoordinate, cmds: cmds)
             robots.append(robot)
-            return robots
+            let nextCommands = rawCommands.dropFirst(2)
+            let commands = nextCommands.map { string in
+                return String(string)
+             }
+            readRobotsData(commands, robots: &robots)
         } else {
-            return robots
+            return
         }
     }
     
