@@ -39,4 +39,4 @@ So the project consists of a tail recursive file parser that creates the necessa
 
 ### Thoughts
 
-Swift is not a tail call recursion optimised language unlike some LISPS etc so if this was "real" then its not the best solution but the specs do specify the limits.
+Swift is not a tail call recursion optimised language ergo were this was "real" then it's perhaps not the best solution but the specs do specify the limits so, you know, recurse away...
