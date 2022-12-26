@@ -6,7 +6,7 @@
 
 * A set of remote operated robots on the Martian surface need to be able to read and then execute a set of instructions.
 * The surface of MARS is considered a FLATEARTH of dimention ` X by Y` and anything that goes over the edge is lost FOREVER. 
-Well not quite because it speaks from the grave as it were given that if the robot falls off of the edge it leaves a scent marker to save other robots from its fate.
+Well not quite because it speaks from the grave because if the robot falls off of the edge it leaves a scent marker to save other robots from its fate.
 * There are `X` bots and each one take a an instruction string.
 * The commands the bots understand are;
   * `L`,`R`,`F`
